@@ -1,0 +1,40 @@
+\documentclass[12pt]{report}
+\usepackage{appendix}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cite}
+\usepackage{eurosym}
+\usepackage{german}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{mathptmx}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\pagestyle{headings}
+\setcounter{tocdepth}{2}
+
+\begin{document}
+  \include{titlepage}
+  \setcounter{page}{0}
+  \pagenumbering{roman}
+%  \include{acknowledgement}
+  \tableofcontents
+  \listoffigures
+  \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+  \setcounter{page}{0}
+  \pagenumbering{arabic}
+  \include{chapter01}
+  \include{chapter02}
+  \include{chapter03}
+  \include{chapter04}
+  \include{chapter0n}
+  \bibliography{references}{}
+  \bibliographystyle{alpha}
+  \addcontentsline{toc}{chapter}{\bibname}
+  \appendix
+  \include{appendix}
+\end{document}

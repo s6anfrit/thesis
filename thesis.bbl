@@ -1,0 +1,178 @@
+\begin{thebibliography}{Moc05}
+
+\bibitem[ard]{arduino}
+{Arduino Produkte}.
+\newblock \url{http://store.arduino.cc/index.php?main_page=index&cPath=11}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[bet]{betrvg}
+{Betriebsverfassungsgesetz \S87 Mitbestimmungsrechte}.
+\newblock \url{http://www.gesetze-im-internet.de/betrvg/__87.html}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[bil]{bildscharbv}
+{Verordnung über Sicherheit und Gesundheitsschutz bei der Arbeit an
+  Bildschirmgeräten (Anhang)}.
+\newblock \url{http://www.gesetze-im-internet.de/bildscharbv/anhang_8.html}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[bka]{bkag}
+{BKA Gesetz \S20k Verdeckter Eingriff in informationstechnische Systeme}.
+\newblock \url{http://www.gesetze-im-internet.de/bkag_1997/__20k.html}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Bun12]{bundeskriminalamt}
+Bundeskriminalamt.
+\newblock {Cybercrime Bundeslagebild 2012}.
+\newblock
+  \url{http://www.bka.de/nn_224082/SharedDocs/Downloads/DE/Publikationen/JahresberichteUndLagebilder/Cybercrime/cybercrimeBundeslagebild2012,templateId=raw,property=publicationFile.pdf/cybercrimeBundeslagebild2012.pdf},
+  2012.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Cha03]{chapweske}
+Adam Chapweske.
+\newblock {The PS/2 Mouse/Keyboard Protocol}.
+\newblock \url{http://www.computer-engineering.org/ps2protocol/}, 2003.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Che09]{chen}
+K.~Chen.
+\newblock {Reversing and exploiting an Apple firmware update}.
+\newblock
+  \url{http://www.blackhat.com/presentations/bh-usa-09/CHEN/BHUSA09-Chen-RevAppleFirm-PAPER.pdf},
+  2009.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[dI07]{spd}
+Bundesministerium des Innern.
+\newblock {Fragenkatalog der SPD-Bundestagsfraktion}.
+\newblock
+  \url{http://netzpolitik.org/wp-upload/fragen-onlinedurchsuchung-SPD.pdf},
+  2007.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[duc]{ducky}
+{USB Rubber Ducky}.
+\newblock
+  \url{http://hakshop.myshopify.com/collections/usb-rubber-ducky/products/usb-rubber-ducky-deluxe}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Eng87]{engelberg}
+Stephen Engelberg.
+\newblock {Embassy security: Story of failure}.
+\newblock
+  \url{http://www.nytimes.com/1987/04/19/world/embassy-security-story-of-failure.html?pagewanted=all&src=pm},
+  1987.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[fem]{female_pins}
+{MiniDIN-6 Connector Pinout}.
+\newblock
+  \url{http://commons.wikimedia.org/wiki/File:MiniDIN-6_Connector_Pinout.svg}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[kee]{keelog}
+{Hardware Keylogger Vergleich}.
+\newblock \url{http://www.keelog.com/de/keylogger_comparison.html}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Kei05]{keizer}
+Gregg Keizer.
+\newblock {Keyloggers Foiled In Attempted \$423 Million Bank Heist}.
+\newblock
+  \url{http://www.informationweek.com/keyloggers-foiled-in-attempted-%24423-million-bank-heist/d/d-id/1031143?},
+  2005.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[keya]{keylogger_ps2}
+{Keylogger-hardware-PS2}.
+\newblock
+  \url{http://commons.wikimedia.org/wiki/File:Keylogger-hardware-PS2.jpg#mediaviewer/File:Keylogger-hardware-PS2.jpg}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[keyb]{keylogger_usb}
+{Keylogger-hardware-USB}.
+\newblock
+  \url{http://commons.wikimedia.org/wiki/File:Keylogger-hardware-USB.jpg#mediaviewer/Datei:Keylogger-hardware-USB.jpg}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Kir08]{kirk}
+Jeremy Kirk.
+\newblock {Swedish Police Warn of Tampered Credit Card Terminals}.
+\newblock \url{http://www.pcworld.com/article/155525/article.html}, 2008.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[KN14]{badusb}
+Jakob~Lell Karsten~Nohl.
+\newblock {BadUSB}.
+\newblock \url{https://srlabs.de/badusb/}, 2014.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Mih10]{mihailowitsch}
+Fabian Mihailowitsch.
+\newblock {Detecting Hardware Keyloggers}.
+\newblock
+  \url{http://conference.hackinthebox.org/hitbsecconf2010kul/materials/D1T1%20-%20Fabian%20Mihailowitsch%20-%20Detecting%20Hardware%20Keyloggers.pdf},
+  2010.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Moc05]{mock}
+Bernward Mock.
+\newblock {Die PS/2 Tastaturschnittstelle (Übersetzung)}.
+\newblock \url{http://www.marjorie.de/ps2/ps2.pdf}, 2005.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Mü11]{munich}
+Generalstaatsanwaltschaft München.
+\newblock {Leitfaden zum Datenzugriff insbesondere für den Bereich
+  Telekommunikation}.
+\newblock \url{http://cryptome.org/isp-spy/munich-spy-all.pdf}, 2011.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[pre]{prettyos}
+{PrettyOS Kernel Keyboard}.
+\newblock
+  \url{http://sourceforge.net/p/prettyos/code/HEAD/tree/trunk/Source/kernel/keyboard.c}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[ps2a]{ps2female}
+{Kabel PS/2 Female}.
+\newblock
+  \url{http://www.exp-tech.de/Zubehoer/Steckverbinder/PS-2-Wired-Connector-Panel-Mount-MiniDIN-6.html}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[ps2b]{ps2male}
+{Kabel PS/2 Male}.
+\newblock \url{http://www.conrad.de/ce/de/product/601847/}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[ps2c]{ps2keyboard}
+{PS2Keyboard Library}.
+\newblock \url{http://www.pjrc.com/teensy/td_libs_PS2Keyboard.html}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[sca]{scancodes}
+{Scancode-Set 2 Ausschnitt}.
+\newblock \url{http://retired.beyondlogic.org/keyboard/scancode.gif}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[stg]{stgb}
+{Strafgesetzbuch \S202a Ausspähen von Daten}.
+\newblock \url{http://www.gesetze-im-internet.de/stgb/__202a.html}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[stp]{stpo}
+{Strafprozessordnung \S100h}.
+\newblock \url{http://www.gesetze-im-internet.de/stpo/__100h.html}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[TH08]{holz}
+Felix~Freiling Thorsten~Holz, Markus~Engelberth.
+\newblock {Learning More About the Underground Economy: A Case-Study of
+  Keyloggers and Dropzones}.
+\newblock
+  \url{https://ub-madoc.bib.uni-mannheim.de/2160/1/impersonation_attacks_TR.pdf},
+  2008.
+\newblock Aufrufdatum: 23.09.2014.
+
+\end{thebibliography}
