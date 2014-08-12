@@ -1,24 +1,44 @@
 \chapter{Implementierung}
-
+test
 
 
 
 \section{Softwaredokumentation}
-\subsection{Bibliothek Keys}
+
+\subsection{Aufnahme von Tastatureingaben}
+\subsubsection{readKeys()}
+\subsubsection{writeSd()}
+\subsubsection{reader()}
 \begin{figure}
   \centering
-  %\includegraphics[angle=90,width=1\textwidth]{images/diagram_keys.png}
-  \caption{Aktivitätsdiagramm für die Bibliothek Keys}
-  \label{diagram_keys}
+  %\includegraphics[angle=90,width=1\textwidth]{images/diagram_reader.png}
+  \caption{Aktivitätsdiagramm für die Methode reader()}
+  \label{diagram_reader}
 \end{figure}
 
-\subsection{Software auf dem Mikrocontroller}
+\subsection{Wiedergabe von Tastatureingaben mittels SD-Karte}
+\subsubsection{readSd()}
+\subsubsection{writeKeys()}
+\subsubsection{writer()}
 \begin{figure}
   \centering
-  %\includegraphics[angle=90,width=1\textwidth]{images/diagram_arduino.png}
-  \caption{Aktivitätsdiagramm für die Software auf dem Mikrocontroller}
-  \label{diagram_arduino}
+  %\includegraphics[angle=90,width=1\textwidth]{images/diagram_writer.png}
+  \caption{Aktivitätsdiagramm für die Methode writer()}
+  \label{diagram_writer}
 \end{figure}
+
+\subsection{Wiedergabe von Tastatureingaben über Ethernet}
+\subsubsection{sendWebsite()}
+\subsubsection{writeKeys()}
+\subsubsection{sender()}
+\begin{figure}
+  \centering
+  %\includegraphics[angle=90,width=1\textwidth]{images/diagram_sender.png}
+  \caption{Aktivitätsdiagramm für die Methode sender()}
+  \label{diagram_sender}
+\end{figure}
+
+\subsection{Gesamter Programmablauf}
 
 
 
