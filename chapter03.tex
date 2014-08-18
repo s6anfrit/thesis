@@ -5,10 +5,19 @@ test
 
 \section{Softwaredokumentation}
 
+\subsection{Hilfsfunktionen für Tastatur}
+\subsubsection{void initKeys(int dataPin, int clockPin)}
+\subsubsection{void setHigh(int pin)}
+\subsubsection{void setLow(int pin)}
+
+\subsection{Hilfsfunktionen für SD-Karte}
+\subsubsection{void initCard(int sdPin)}
+\subsubsection{String readFile(char* filename)}
+\subsubsection{void writeFile(char* filename, String content)}
+\subsubsection{void deleteFile(char* filename)}
+
+
 \subsection{Aufnahme von Tastatureingaben}
-\subsubsection{readKeys()}
-\subsubsection{writeSd()}
-\subsubsection{reader()}
 \begin{figure}
   \centering
   %\includegraphics[angle=90,width=1\textwidth]{images/diagram_reader.png}
@@ -17,9 +26,6 @@ test
 \end{figure}
 
 \subsection{Wiedergabe von Tastatureingaben mittels SD-Karte}
-\subsubsection{readSd()}
-\subsubsection{writeKeys()}
-\subsubsection{writer()}
 \begin{figure}
   \centering
   %\includegraphics[angle=90,width=1\textwidth]{images/diagram_writer.png}
@@ -28,9 +34,6 @@ test
 \end{figure}
 
 \subsection{Wiedergabe von Tastatureingaben über Ethernet}
-\subsubsection{sendWebsite()}
-\subsubsection{writeKeys()}
-\subsubsection{sender()}
 \begin{figure}
   \centering
   %\includegraphics[angle=90,width=1\textwidth]{images/diagram_sender.png}
