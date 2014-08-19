@@ -1,20 +1,29 @@
 \chapter{Implementierung}
-test
+Die Umsetzung der zu Beginn beschriebenen Funktionalitäten wird innerhalb der folgenden Teilabschnitte beschrieben. Der erste Teilabschnitt dieses Kapitels dokumentiert die entwickelte Software \cite{badps2}, welche den Mikrocontroller steuert und den Programmablauf der einzelnen Funktionalitäten zeigt. Der zweite Teil dieses Kapitels erläutert den Aufbau der Elektronik und zeigt wie die verwendete Hardware mit dem Mikrocontroller zusammengebaut wurde.
 
 
 
 \section{Softwaredokumentation}
+Die implementierten Softwarekomponenten \cite{badps2} gliedern sich in die drei  Diese beinhalten Hilfsfunktionen für die Tastatur, für die SD-Karte und für die Webseite, welche vorab in den nächsten Abschnitten beschrieben werden.
 
-\subsection{Hilfsfunktionen für Tastatur}
+\subsection{Hilfsfunktionen für die Tastatur}
 \subsubsection{void initKeys(int dataPin, int clockPin)}
 \subsubsection{void setHigh(int pin)}
 \subsubsection{void setLow(int pin)}
+\subsubsection{unsigned char readKeys(int dataPin, int clockPin)}
+\subsubsection{void sendKeys(int dataPin, int clockPin, unsigned char data)}
+\subsubsection{void writeKeys(unsigned char data)}
 
-\subsection{Hilfsfunktionen für SD-Karte}
+
+\subsection{Hilfsfunktionen für die SD-Karte}
 \subsubsection{void initCard(int sdPin)}
 \subsubsection{String readFile(char* filename)}
 \subsubsection{void writeFile(char* filename, String content)}
 \subsubsection{void deleteFile(char* filename)}
+
+
+\subsection{Hilfsfunktionen für die Webseite}
+\subsubsection{void sendWebsite(EthernetClient client, String serverState)}
 
 
 \subsection{Aufnahme von Tastatureingaben}
@@ -25,6 +34,7 @@ test
   \label{diagram_reader}
 \end{figure}
 
+
 \subsection{Wiedergabe von Tastatureingaben mittels SD-Karte}
 \begin{figure}
   \centering
@@ -33,6 +43,7 @@ test
   \label{diagram_writer}
 \end{figure}
 
+
 \subsection{Wiedergabe von Tastatureingaben über Ethernet}
 \begin{figure}
   \centering
@@ -40,6 +51,7 @@ test
   \caption{Aktivitätsdiagramm für die Methode sender()}
   \label{diagram_sender}
 \end{figure}
+
 
 \subsection{Gesamter Programmablauf}
 

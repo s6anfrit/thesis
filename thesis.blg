@@ -1,0 +1,70 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: titlepage.aux
+A level-1 auxiliary file: chapter01.aux
+A level-1 auxiliary file: chapter02.aux
+A level-1 auxiliary file: chapter03.aux
+A level-1 auxiliary file: chapter04.aux
+A level-1 auxiliary file: chapter0n.aux
+The style file: alpha.bst
+A level-1 auxiliary file: appendix.aux
+Database file #1: references.bib
+Warning--to sort, need author or key in keylogger_ps2
+Warning--to sort, need author or key in keylogger_usb
+Warning--to sort, need author or key in keelog
+Warning--to sort, need author or key in arduino
+Warning--to sort, need author or key in female_pins
+Warning--to sort, need author or key in scancodes
+Warning--to sort, need author or key in ps2keyboard
+Warning--to sort, need author or key in prettyos
+Warning--to sort, need author or key in ducky
+Warning--to sort, need author or key in stgb
+Warning--to sort, need author or key in bildscharbv
+Warning--to sort, need author or key in betrvg
+Warning--to sort, need author or key in stpo
+Warning--to sort, need author or key in bkag
+Warning--to sort, need author or key in ps2male
+Warning--to sort, need author or key in ps2female
+You've used 28 entries,
+            2543 wiz_defined-function locations,
+            672 strings with 8444 characters,
+and the built_in function-call counts, 6822 in all, are:
+= -- 704
+> -- 112
+< -- 12
++ -- 27
+- -- 24
+* -- 294
+:= -- 925
+add.period$ -- 96
+call.type$ -- 28
+change.case$ -- 124
+chr.to.int$ -- 25
+cite$ -- 60
+duplicate$ -- 292
+empty$ -- 733
+format.name$ -- 45
+if$ -- 1542
+int.to.chr$ -- 4
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 155
+num.names$ -- 36
+pop$ -- 297
+preamble$ -- 1
+purify$ -- 152
+quote$ -- 0
+skip$ -- 233
+stack$ -- 0
+substring$ -- 212
+swap$ -- 28
+text.length$ -- 12
+text.prefix$ -- 9
+top$ -- 0
+type$ -- 224
+warning$ -- 16
+while$ -- 24
+width$ -- 30
+write$ -- 346
+(There were 16 warnings)
