@@ -1,8 +1,13 @@
 \begin{thebibliography}{Moc05}
 
-\bibitem[ard]{arduino}
+\bibitem[arda]{arduino}
 {Arduino Produkte}.
 \newblock \url{http://store.arduino.cc/index.php?main_page=index&cPath=11}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[ardb]{arduino_sd}
+{Arduino SD Library}.
+\newblock \url{http://arduino.cc/en/pmwiki.php?n=Reference/SD}.
 \newblock Aufrufdatum: 23.09.2014.
 
 \bibitem[bet]{betrvg}
@@ -69,6 +74,12 @@ Stephen Engelberg.
 {MiniDIN-6 Connector Pinout}.
 \newblock
   \url{http://commons.wikimedia.org/wiki/File:MiniDIN-6_Connector_Pinout.svg}.
+\newblock Aufrufdatum: 23.09.2014.
+
+\bibitem[Fri14]{badps2}
+Andreas Fritz.
+\newblock {BadPS2: Implementierung der Bachelorarbeit}.
+\newblock \url{https://github.com/s6anfrit/badps2}, 2014.
 \newblock Aufrufdatum: 23.09.2014.
 
 \bibitem[kee]{keelog}

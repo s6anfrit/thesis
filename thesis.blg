@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2013)
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: titlepage.aux
@@ -24,47 +24,48 @@ Warning--to sort, need author or key in bildscharbv
 Warning--to sort, need author or key in betrvg
 Warning--to sort, need author or key in stpo
 Warning--to sort, need author or key in bkag
+Warning--to sort, need author or key in arduino_sd
 Warning--to sort, need author or key in ps2male
 Warning--to sort, need author or key in ps2female
-You've used 28 entries,
+You've used 30 entries,
             2543 wiz_defined-function locations,
-            672 strings with 8444 characters,
-and the built_in function-call counts, 6822 in all, are:
-= -- 704
-> -- 112
-< -- 12
-+ -- 27
-- -- 24
-* -- 294
-:= -- 925
-add.period$ -- 96
-call.type$ -- 28
-change.case$ -- 124
-chr.to.int$ -- 25
-cite$ -- 60
-duplicate$ -- 292
-empty$ -- 733
-format.name$ -- 45
-if$ -- 1542
-int.to.chr$ -- 4
+            679 strings with 8629 characters,
+and the built_in function-call counts, 7316 in all, are:
+= -- 755
+> -- 121
+< -- 13
++ -- 30
+- -- 26
+* -- 315
+:= -- 993
+add.period$ -- 103
+call.type$ -- 30
+change.case$ -- 133
+chr.to.int$ -- 26
+cite$ -- 64
+duplicate$ -- 313
+empty$ -- 785
+format.name$ -- 49
+if$ -- 1653
+int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 155
-num.names$ -- 36
-pop$ -- 297
+newline$ -- 166
+num.names$ -- 39
+pop$ -- 318
 preamble$ -- 1
-purify$ -- 152
+purify$ -- 163
 quote$ -- 0
-skip$ -- 233
+skip$ -- 249
 stack$ -- 0
-substring$ -- 212
-swap$ -- 28
-text.length$ -- 12
-text.prefix$ -- 9
+substring$ -- 227
+swap$ -- 30
+text.length$ -- 13
+text.prefix$ -- 10
 top$ -- 0
-type$ -- 224
-warning$ -- 16
-while$ -- 24
-width$ -- 30
-write$ -- 346
-(There were 16 warnings)
+type$ -- 240
+warning$ -- 17
+while$ -- 26
+width$ -- 32
+write$ -- 371
+(There were 17 warnings)
