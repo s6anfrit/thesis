@@ -1,10 +1,11 @@
 \chapter{Grundlagen}
-Um den Mikrocontroller zu implementieren, der Tastatureingabesequenzen sowohl aufnehmen als auch wiedergeben soll, müssen dafür einige Grundlagen benannt werden. Dieses Kapitel beschreibt im Folgenden die benötigten Elemente der PS/2-Tastaturschnittstelle und des PS/2-Protokolls, sowie einige verwandte Arbeiten in diesem Themengebiet als auch die rechtlichen Grundlagen. Die Abschnitte PS/2-Tastaturschnittstelle und PS/2-Protokoll fassen die Beschreibungen von Adam Chapweske \cite{chapweske} bzw. der Übersetzung von Bernward Mock \cite{mock} zusammen.
+\label{grundlagen}
+Um den Mikrocontroller zu implementieren, der Tastatur-Eingabesequenzen sowohl aufnehmen als auch wiedergeben soll, müssen dafür einige Grundlagen benannt werden. Dieses Kapitel beschreibt im Folgenden die benötigten Elemente der PS/2-Tastaturschnittstelle und des PS/2-Protokolls, sowie einige verwandte Arbeiten in diesem Themengebiet als auch den verwendeten Arduino Mikrocontroller und die rechtlichen Grundlagen. Die Abschnitte PS/2-Tastaturschnittstelle und PS/2-Protokoll fassen die Beschreibungen von Adam Chapweske \cite{chapweske} bzw. der Übersetzung von Bernward Mock \cite{mock} zusammen.
 
 
 
 \section{PS/2-Tastaturschnittstelle}
-IBM entwickelte 1987 die PS/2-Tastatur zur Verwendung am gleichnamigen PC, dem Personal System/2, und ist kompatibel mit der zuvor entwickelten AT-Tastatur. Der Anschluss erfolgt über einen 5- oder 6-poligen Mini-DIN Stecker, bzw. alternativ über einen SDL-Stecker. In Abbildung \ref{female_pins} \cite{female_pins} ist die Anordnung der 6 Pins aufseiten des PCs (female) zu sehen. Spiegelverkehrt dazu ist der Anschluss der Tastatur (male).
+IBM entwickelte 1987 die PS/2-Tastatur zur Verwendung am gleichnamigen PC, dem Personal System/2, und ist kompatibel mit der zuvor entwickelten AT-Tastatur. Der Anschluss erfolgt über einen 5- oder 6-poligen Mini-DIN Stecker, bzw. alternativ über einen SDL-Stecker. In Abbildung \ref{female_pins} \cite{female_pins} ist die Anordnung der 6 Pins aufseiten des PCs (female) zu sehen. Spiegelverkehrt dazu ist der Anschluss der Tastatur (male) \cite{chapweske} \cite{mock}.
 
 \begin{figure}
   \centering
@@ -29,7 +30,7 @@ IBM entwickelte 1987 die PS/2-Tastatur zur Verwendung am gleichnamigen PC, dem P
   \end{minipage}
 \end{figure}
 
-Für die Verwendung einer PS/2-Tastatur werden nur 4 der 6 Pins benötigt, da ein Datensignal, eine Erdung, ein Takt und eine Leitung mit 5 Volt ausreichen um Tastensignale zu übertragen (siehe Abbildung \ref{pin_specification}). Ein in der Tastatur verbauter Mikrocontroller, ein sogenannter Keyboard-Encoder, scannt die Tasten und überprüft ob eine Taste gedrückt ist oder nicht. PS/2-Tastaturen verwenden typischerweise zwischen 84 bis 104 Tasten, welche sogenannten Scancodes zugeordnet werden. Es existieren drei Scancode-Sets, wobei PS/2-Tastaturen den als Scancode-Set 2 bekannten Satz benutzen. In Abbildung \ref{scancodes} \cite{scancodes} ist ein Ausschnitt dieser Scancodes auf einigen Tasten zu sehen und im Anhang befindet sich die Tabelle \ref{scancode_set_2} des gesamten Scancode-Sets 2.
+Für die Verwendung einer PS/2-Tastatur werden nur 4 der 6 Pins benötigt, da ein Datensignal, eine Erdung, ein Takt und eine Leitung mit 5 Volt ausreichen um Tastensignale zu übertragen (siehe Abbildung \ref{pin_specification}). Ein in der Tastatur verbauter Mikrocontroller, ein sogenannter Keyboard-Encoder, scannt die Tasten und überprüft, ob eine Taste gedrückt ist oder nicht. PS/2-Tastaturen verwenden typischerweise zwischen 84 bis 104 Tasten, welche sogenannten Scancodes zugeordnet werden. Es existieren drei Scancode-Sets, wobei PS/2-Tastaturen den als Scancode-Set 2 bekannten Satz benutzen. In Abbildung \ref{scancodes} \cite{scancodes} ist ein Ausschnitt dieser Scancodes auf einigen Tasten zu sehen und im Anhang befindet sich die Tabelle \ref{scancode_set_2} des gesamten Scancode-Sets 2 \cite{chapweske} \cite{mock}.
 
 \begin{figure}
   \centering
@@ -38,67 +39,78 @@ Für die Verwendung einer PS/2-Tastatur werden nur 4 der 6 Pins benötigt, da ei
   \label{scancodes}
 \end{figure}
 
-Die Scancodes sind Hexadezimalwerte bestehend aus einem Makecode, welcher gesendet wird wenn die Taste gedrückt wird, und einem Breakcode, der beim Loslassen der Taste gesendet wird. Breakcodes setzen sich in fast allen Fällen aus einem 0xf0 und dem Makecode der Taste zusammen. Zudem existieren erweiterete Tasten, deren Makecode länger als ein Byte ist und zusätzlich ein 0xe0 als erstes Byte haben, was auch für den zugehörigen Breakcode gilt. Um also z.B. ein ``G'' wiederzugeben ist es notwendig zuerst die Shift-Taste gedrückt zu halten, die G-Taste zu drücken und beide Tasten in umgekehrter Reihenfolge loszulassen. Dementsprechend können für dieses Beispiel die folgenden Scancodes übertragen werden: 0x12 (Make L Shift), 0x34 (Make G), 0xf0 0x34 (Break G) und 0xf0 0x12 (Break L Shift).
+Die Scancodes sind Hexadezimalwerte bestehend aus einem Makecode, welcher gesendet wird, wenn die Taste gedrückt wird, und einem Breakcode, der beim Loslassen der Taste gesendet wird. Breakcodes setzen sich in fast allen Fällen aus einem 0xf0 und dem Makecode der Taste zusammen. Zudem existieren erweiterete Tasten, deren Makecode länger als ein Byte ist und zusätzlich ein 0xe0 als erstes Byte haben, was auch für den zugehörigen Breakcode gilt. Um also z.B. ein ``G'' wiederzugeben ist es notwendig zuerst die Shift-Taste gedrückt zu halten, die G-Taste zu drücken und beide Tasten in umgekehrter Reihenfolge loszulassen. Dementsprechend können für dieses Beispiel die folgenden Scancodes übertragen werden: 0x12 (Make L Shift), 0x34 (Make G), 0xf0 0x34 (Break G) und 0xf0 0x12 (Break L Shift) \cite{chapweske} \cite{mock}.
 
-Wenn eine Taste dauerhaft gedrückt wird setzt die Wiederholfunktion des Mikrocontrollers der Tastatur ein, auch Typematic genannt. Diese sendet mit einer gewissen Verzögerung (typematic delay) den Makecode der zuletzt gedrückten Taste und dann mit einer bestimmten Wiederholrate (typematic rate) fortwährend denselben Makecode, bis die Taste losgelassen wird. Beide Parameter können durch den PC, in diesem Zusammenhang auch Host genannt, eingestellt werden, wobei die Verzögerung zwischen 0,25 und 1,00 Sekunden liegen kann und die Wiederholrate zwischen 2,0 cps und 30,0 cps (Zeichen pro Sekunde).
+Wenn eine Taste dauerhaft gedrückt wird setzt die Wiederholfunktion des Mikrocontrollers der Tastatur ein, auch Typematic genannt. Diese sendet mit einer gewissen Verzögerung (typematic delay) den Makecode der zuletzt gedrückten Taste und dann mit einer bestimmten Wiederholrate (typematic rate) fortwährend denselben Makecode, bis die Taste losgelassen wird. Beide Parameter können durch den PC, in diesem Zusammenhang auch Host genannt, eingestellt werden, wobei die Verzögerung zwischen 0,25 und 1,00 Sekunden liegen kann und die Wiederholrate zwischen 2,0 cps und 30,0 cps (Zeichen pro Sekunde) \cite{chapweske} \cite{mock}.
 
-Die Tastatur kann weiterhin einen Reset vollziehen und führt dabei einen Selbsttest, auch Basic Assurance Test (BAT) genannt, durch. Dabei wird die Verzögerung auf 0,5 Sekunden und die Wiederholrate auf 10,9 cps gesetzt, sowie Scancode-Set 2 geladen. Zudem werden zu Beginn des BAT die drei LEDs der Tastatur an und danach wieder ausgeschaltet, sowie 0xaa an den Host gesendet für ein erfolgreich abgeschlossenen BAT. Dies geschieht u.a. bei einem erstmaligem Anschluss der Tastatur an den Host.
+Die Tastatur kann weiterhin einen Reset vollziehen und führt dabei einen Selbsttest, auch Basic Assurance Test (BAT) genannt, durch. Dabei wird die Verzögerung auf 0,5 Sekunden und die Wiederholrate auf 10,9 cps gesetzt, sowie Scancode-Set 2 geladen. Zudem werden zu Beginn des BAT die drei LEDs der Tastatur an und danach wieder ausgeschaltet, sowie 0xaa an den Host gesendet für ein erfolgreich abgeschlossenen BAT. Dies geschieht u.a. bei einem erstmaligem Anschluss der Tastatur an den Host \cite{chapweske} \cite{mock}.
 
 Die Kommunikation zwischen dem Host und der Tastatur wird im folgenden Abschnitt anhand des PS/2-Protokolls beschrieben.
 
 
 
 \section{PS/2-Protokoll}
-Bei dem PS/2-Protokoll handelt es sich um ein sogenanntes bi-direktionales serielles Protokoll. Dies bedeutet, dass auch der Host Befehle an die Tastatur senden kann, im Fall des PS/2-Protokolls sind es 17 Host-Befehle. Dabei sind die folgenden Besonderheiten zu beachten:
+Bei dem PS/2-Protokoll handelt es sich um ein sogenanntes bi-direktionales serielles Protokoll. Dies bedeutet, dass auch der Host Befehle an die Tastatur senden kann, im Fall des PS/2-Protokolls sind es 17 Host-Befehle. Dabei sind die folgenden Besonderheiten zu beachten \cite{chapweske} \cite{mock}:
 \begin{itemize}
-  \item Die Tastatur löscht ihren Ausgabepuffer bei jedem empfangenen Befehl.
-  \item Wenn die Tastatur einen ungültigen Befehl oder Parameter empfängt, muss sie mit 0xfe (Resend) antworten.
-  \item Die Tastatur darf keine Scancodes senden, während sie einen Befehl verarbeitet.
-  \item Wenn die Tastatur auf einen Parameter wartet, jedoch einen Befehl empfängt, wird der letzte Befehl verworfen.
+  \item ``Die Tastatur löscht ihren Ausgabepuffer bei jedem empfangenen Befehl.''
+  \item ``Wenn die Tastatur einen ungültigen Befehl oder Parameter empfängt, muss sie mit 0xfe (Resend) antworten.''
+  \item ``Die Tastatur darf keine Scancodes senden, während sie einen Befehl verarbeitet.''
+  \item ``Wenn die Tastatur auf einen Parameter wartet, jedoch einen Befehl empfängt, wird der letzte Befehl verworfen.''
 \end{itemize}
-Eine detaillierte Auflistung dieser Befehle zeigt die Tabelle ... im Anhang. Zu diesen Befehlen zählen 0xff (Reset), worauf die Tastatur 0xfa (Acknowledge) sendet und einen Reset durchführt, 0xfe (Resend), welcher die Tastatur das letzte gesendete Byte erneut senden lässt, und mehrere Set-Befehle wie z.B. * 0xf0 (Set Scancode-Set), der mit einem Parameter für * das Scancode-Set verändern kann.
+Eine detaillierte Auflistung dieser Befehle zeigt die Ausarbeitung von Adam Chapweske \cite{chapweske} bzw. Bernward Mock \cite{mock}. Zu diesen Befehlen zählen 0xff (Reset), worauf die Tastatur 0xfa (Acknowledge) sendet und einen Reset durchführt, 0xfe (Resend), welcher die Tastatur das letzte gesendete Byte erneut senden lässt, und mehrere Set-Befehle wie z.B. * 0xf0 (Set Scancode-Set), der mit einem Parameter für * das Scancode-Set verändern kann \cite{chapweske} \cite{mock}.
 
-Die Kommunikation von der Tastatur zum Host erfolgt in einem festgelegten Ablauf, welcher in Abbildung \ref{device_to_host} dargestellt ist.
+Die Kommunikation von der Tastatur zum Host erfolgt in einem festgelegten Ablauf, welcher in Abbildung \ref{device_to_host} \cite{device_to_host} dargestellt ist.
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{images/device_to_host.jpg}
   \caption{Kommunikation von Tastatur zu Host}
   \label{device_to_host}
 \end{figure}
-Zu Beginn werden die Daten- und die Taktleitung auf High bzw. 1 gesetzt, welches der Ruhezustand ist. Danach wird 1 Startbit bei fallender Taktflanke gesendet, welches immer Low bzw. 0 ist. Im selben Rhytmus werden dann 8 Datenbits gesendet und zwar mit Least Significant Bit (LSB) voran. Anschließend folgt 1 Paritätsbit, High bzw. 1 bei ungerader Parität, und 1 Stopbit, welches immer High bzw. 1 ist. Mithilfe dieses Ablaufs wurde 1 Byte von der Tastatur zum Host übertragen.
+Zu Beginn werden die Daten- und die Taktleitung auf High bzw. 1 gesetzt, welches der Ruhezustand ist. Danach wird 1 Startbit bei fallender Taktflanke gesendet, welches immer Low bzw. 0 ist. Im selben Rhytmus werden dann 8 Datenbits gesendet und zwar mit Least Significant Bit (LSB) voran. Anschließend folgt 1 Paritätsbit, High bzw. 1 bei ungerader Parität, und 1 Stopbit, welches immer High bzw. 1 ist. Mithilfe dieses Ablaufs wird 1 Byte von der Tastatur zum Host übertragen \cite{chapweske} \cite{mock}.
 
-Der Ablauf der Kommunikation von dem Host zur Tastatur folgt einem ähnlichen Schema, welches in Abbildung \ref{host_to_device} zu sehen ist.
+Der Ablauf der Kommunikation von dem Host zur Tastatur folgt einem ähnlichen Schema, welches in Abbildung \ref{host_to_device} \cite{host_to_device} zu sehen ist.
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{images/host_to_device.jpg}
   \caption{Kommunikation von Host zu Tastatur}
   \label{host_to_device}
 \end{figure}
-ggf. 1 ACK-Bit (nur bei Host zu Tastatur)
-Delay
+Der Host setzt zuerst die Taktleitung und danach die Datenleitung auf Low bzw. 0, um der Tastatur mit diesem 1 Startbit einen Übertragungswunsch zu signalisieren. Danach wird die Taktleitung von dem Host wieder auf High bzw. 1 gesetzt und die Tastatur fängt an ein Taktsignal zu senden. Während dieses Taktsignals werden zeitgleich zur der fallenden Taktflanke die 8 Datenbits und 1 Paritätsbit vom Host auf der Datenleitung gesendet. Abschließend sendet die Tastatur 1 ACK-Bit, welches immer Low bzw. 0 ist. Somit kann ein Befehl von dem Host zur Tastatur übertragen werden \cite{chapweske} \cite{mock}.
+
+Die Zeitabstände zwischen den Signalen sind abhängig von der Taktfrequenz, welche 10-16,7kHz betragen kann. Dementsprechend ist darauf zu achten, dass zwischen der steigenden Taktflanke und einem Wechsel des Signals auf der Datenleitung mindestens 5$\mu$s und zwischen einem Wechsel des Signals auf der Datenleitung und der fallenden Taktflanke mindestens 5$\mu$s und maximal 25$\mu$s liegen, vgl. \cite{chapweske} \cite{mock}.
+
+
+
+\section{Arduino Mikrocontroller}
+Bei den Produkten von Arduino handelt es sich um Mikrocontroller und entsprechendes Zubehör, deren Design Open Source ist \cite{arduino}. Die Kommunikation mit den Mikrocontrollern erfolgt mittels der Programmiersprache C. Zudem besitzen die Mikrocontroller einige Standardfunktionen \cite{arduino_language}. Zum Zweck der Implementierung der eingangs beschriebenen Funktionalitäten wurde der Mikrocontroller Arduino Mega 2560 Board \cite{arduino_mega} und das Arduino Ethernet Shield \cite{arduino_ethernet} ausgewählt.
+
+Der Mikrocontroller selbst besitzt eine CPU mit 16 MHz, 256 KB RAM und zudem 54 digitale und 14 analoge Pins \cite{arduino_mega}. Das Ethernet Shield besitzt neben einem Ethernet Anschluss auch einen Steckplatz für eine microSD-Karte \cite{arduino_ethernet}. Der Mikrocontroller und das Ethernet Shield lassen sich zusammenstecken und verfügen damit über alle benötigten Anschlüsse für die geplanten Funktionalitäten. So ist es möglich sowohl durch die verfügbaren Pins die PS/2-Anschlüsse zu realisieren, als auch den Mikrocontroller über das Ethernet Shield mit dem Netzwerk und der SD-Karte zu verbinden \cite{arduino_mega} \cite{arduino_ethernet}.
+
 
 
 \section{Verwandte Arbeiten}
 Wie bereits in der Einleitung erwähnt, existieren viele Produkte im Bereich der Hardware-Keylogger. So gibt es bereits Keylogger für USB-Tastaturen und PS/2-Tastaturen mit verschiedenen Speichergrößen oder der Möglichkeit die aufgezeichneten Tastatureingaben über Wi-Fi zu versenden \cite{keelog}.
 
-Im Bereich der Mikrocontroller gibt es verschiedene Bibliotheken, die das Mitlesen von Tastatureingaben ermöglichen. Eine verbreitete Implementierung ist eine Bibliothek, die sowohl für Arduino Mikrocontroller als auch andere Mikrocontroller gedacht ist \cite{ps2keyboard}. Die bereitgestellten Funktionen erlauben es, wie in den mitgelieferten Beispielen gezeigt wird, die Tastatureingaben, der mit dem Mikrocontroller verbundenen Tastatur, über den Mikrocontroller auszugeben. Auch in anderen Implementierungen, wie z.B. dem Tastaturtreiber des Betriebssystems PrettyOS, werden Tastatureingaben entgegen genommen und in ASCII-Zeichen umgewandelt, um diese u.a. auf dem Bildschirm auszugeben \cite{prettyos}.
+Im Bereich der Mikrocontroller gibt es verschiedene Bibliotheken, die das Mitlesen von Tastatureingaben ermöglichen. Eine verbreitete Implementierung ist eine Bibliothek, die sowohl für Arduino Mikrocontroller als auch andere Mikrocontroller gedacht ist \cite{ps2keyboard}. Die bereitgestellten Funktionen erlauben es die Tastatureingaben, der mit dem Mikrocontroller verbundenen Tastatur, über den Mikrocontroller an den PC auszugeben. Demonstiert wird dies durch die mitgelieferten Beispiele. Auch in anderen Implementierungen, wie z.B. dem Tastaturtreiber des Betriebssystems PrettyOS, werden Tastatureingaben entgegen genommen und in ASCII-Zeichen umgewandelt, um diese u.a. auf dem Bildschirm auszugeben \cite{prettyos}.
 
 Es wurden aber auch Konzepte und deren Umsetzung dokumentiert, welche die Manipulation von Tastatureingaben zeigen. In einem bestehenden Ansatz wurde die Firmware des Mikrocontrollers einer Apple-Tastatur überschrieben \cite{chen}. Dies hatte zur Folge, dass nach einer normalen Zeicheneingabe und einer bestimmten Befehlsequenz diese Zeicheneingabe erneut, aber spiegelverkehrt an den PC gesendet wurde.
 
-Andere Ansätze werden zudem als Produkt vertrieben, wie z.B. der USB-Stick Rubber Ducky \cite{ducky}. Dieser enthält unter seiner Abdeckung einen zusätzlichen Mikrocontroller mit einer Speicherkarte. Mithilfe von eigenen Befehlen, die in einer Textdatei auf der Speicherkarte gespeichert werden kann, führt der USB-Stick diese Befehle als Tastatureingaben aus, sobald er mit einem PC verbunden wird.
+Andere Ansätze werden zudem als Produkt vertrieben, wie z.B. der USB-Stick Rubber Ducky \cite{ducky}. Dieser enthält unter seiner Abdeckung einen zusätzlichen Mikrocontroller mit einer Speicherkarte. Mithilfe von eigenen Befehlen, die in einer Textdatei auf der Speicherkarte gespeichert werden können, führt der USB-Stick diese Befehle als Tastatureingaben aus, sobald er mit einem PC verbunden wird.
 
-Zuletzt wurde ein weiterer Ansatz mit dem Namen BadUSB präsentiert \cite{badusb}. Dabei wurde die Möglichkeit genutzt die Firmware eines jeglichen USB-Geräts umzuschreiben, sodass diese sich als eine andere Geräteklasse ausgeben, z.B. Tastatur. Diese wiederum sendet für den Anwender nicht wahrnehmbare schnelle Tasteneingaben an den PC, sodass dieser Malware aus dem Internet herunterlädt. Virenscanner können den Bereich der Firmware eines USB-Geräts nicht überprüfen, sodass diese Angriffe bisher erfolgreich durchgeführt werden können.
+Zuletzt wurde ein weiterer Ansatz mit dem Namen BadUSB präsentiert \cite{badusb}. Dabei wurde die Möglichkeit genutzt die Firmware eines jeglichen USB-Geräts umzuschreiben, sodass diese sich als eine andere Geräteklasse ausgibt, z.B. als Tastatur. Diese wiederum sendet für den Anwender nicht wahrnehmbare schnelle Tasteneingaben an den PC, sodass dieser Malware aus dem Internet herunterlädt. Virenscanner können den Bereich der Firmware eines USB-Geräts nicht überprüfen, sodass diese Angriffe bisher erfolgreich durchgeführt werden können.
+
+Im Kontrast dazu wird in der vorliegenden Bachelorarbeit ein zusätzlicher Mikrocontroller zur Aufnahme und Wiedergabe eingesetzt, ähnlich wie der USB-Stick Rubber Ducky. Jedoch wird mit der Implementierung im Zuge dieser Arbeit nicht nur ein anderer Tastaturanschluss verwendet. Sondern durch den zusätzlichen Einsatz eines Ethernet-Anschlusses besteht z.B. die Möglichkeit Tasteneingaben dynamisch über ein Netzwerk zu senden.
 
 
 
 \section{Rechtliche Grundlagen}
-Die rechtlichen Grundlagen für den Einsatz technischer Hilfsmittel zum unbefugten Aufzeichnen oder Manipulieren von Daten sind differenziert zu betrachten, denn meist ist die Rechtmäßigkeit einer Verwendung fallbezogen. Der Paragraph \S 202a Strafgesetzbuch \cite{stgb} regelt den unbefugten Zugriff auf Daten folgendermaßen:
-\begin{quote}
-  (1) Wer unbefugt sich oder einem anderen Zugang zu Daten, die nicht für ihn bestimmt und die gegen unberechtigten Zugang besonders gesichert sind, unter Überwindung der Zugangssicherung verschafft, wird mit Freiheitsstrafe bis zu drei Jahren oder mit Geldstrafe bestraft. \\
-  (2) Daten im Sinne des Absatzes 1 sind nur solche, die elektronisch, magnetisch oder sonst nicht unmittelbar wahrnehmbar gespeichert sind oder übermittelt werden.
-\end{quote}
+Die rechtlichen Grundlagen für den Einsatz technischer Hilfsmittel zum unbefugten Aufzeichnen oder Manipulieren von Daten sind differenziert zu betrachten, denn meist ist die Rechtmäßigkeit einer Verwendung fallbezogen. Der Paragraph 202a Strafgesetzbuch \cite{stgb} regelt den unbefugten Zugriff auf Daten folgendermaßen:
+\begin{enumerate}
+  \item ``Wer unbefugt sich oder einem anderen Zugang zu Daten, die nicht für ihn bestimmt und die gegen unberechtigten Zugang besonders gesichert sind, unter Überwindung der Zugangssicherung verschafft, wird mit Freiheitsstrafe bis zu drei Jahren oder mit Geldstrafe bestraft.''
+  \item ``Daten im Sinne des Absatzes 1 sind nur solche, die elektronisch, magnetisch oder sonst nicht unmittelbar wahrnehmbar gespeichert sind oder übermittelt werden.''
+\end{enumerate}
 Dies bedeutet zum Bespiel, dass es verboten ist mithilfe eines Hardware-Keyloggers die Tastatureingaben einer anderen Person unbefugt aufzuzeichnen.
 
 Auch einem Arbeitgeber ist es im Allgemeinen nicht gestattet, Daten der Arbeitnehmer ohne deren Wissen festzuhalten \cite{bildscharbv}. Darüber hinaus regelt das Betriebsverfassungsgesetz, dass der Betriebsrat bei der Einführung technischer Hilfsmittel zur Aufzeichnung von Verhalten und Leistung der Arbeitnehmer Mitbestimmungsrechte besitzt \cite{betrvg}.
 
-Anders verhält es sich beim Einsatz technischer Hilfsmittel zum Aufzeichnen von Daten bzgl. der Strafverfolgung. Zwar ist \S 100h Abs. 1 Nr. 2 Strafprozessordnung \cite{stpo} laut einer internen Einschätzung der Generalstaatsanwaltschaft München \cite{munich} nicht ausreichend, jedoch wurde mit \S 20k BKA-Gesetz \cite{bkag} entsprechende Grundlagen für den Einsatz solcher Hilfsmittel geschaffen. Somit ist z.B. der Einsatz von ``Remote Forensic Software'' (ugs. ``Bundestrojaner'') unter bestimmten Umständen möglich, welcher eine Funktion zur Aufzeichnung von Tastatureingaben besitzt \cite{spd}.
+Anders verhält es sich beim Einsatz technischer Hilfsmittel zum Aufzeichnen von Daten bzgl. der Strafverfolgung. Zwar ist \S 100h Abs. 1 Nr. 2 Strafprozessordnung \cite{stpo} laut einer internen Einschätzung der Generalstaatsanwaltschaft München \cite{munich} nicht ausreichend, jedoch wurde mit \S 20k BKA-Gesetz \cite{bkag} entsprechende Grundlagen für den Einsatz solcher Hilfsmittel geschaffen. Somit ist z.B. der Einsatz von ``Remote Forensic Software'' (ugs. ``Bundestrojaner'') unter bestimmten Umständen möglich, welcher u.a. die Funktion eines Software-Keyloggers übernehmen kann und somit zur Aufzeichnung von Tastatureingaben eingesetzt werden kann.\cite{spd}.
