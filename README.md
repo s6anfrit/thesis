@@ -1,0 +1,4 @@
+Aufnahme und Wiedergabe von Tastatur-Eingabesequenzen mittels Arduino Mikrocontroller
+======
+
+Das Ziel dieser Bachelorarbeit ist es zu zeigen, wie die Aufnahme und Wiedergabe von Tastatur-Eingabesequenzen mittels eines Arduino Mikrocontrollers realisierbar ist. Demonstriert wird dies durch die Implementierung von drei Funktionalitäten, welche die PS/2-Schnittstelle zur Kommunikation verwenden. Dabei handelt es sich erstens um die Aufnahme von Tastatureingaben, zweitens um die Wiedergabe von Tastatureingaben mithilfe einer SD-Karte und drittens um die Wiedergabe von Ta- statureingaben über Ethernet. Anschließend werden die genannten Funktionalitäten getestet und darauf hinsichtlich ihrer Korrektheit und Grenzen evaluiert. Schließlich wird in einem Ausblick erläutert, welche weitergehenden Einsatzmöglichkeiten die Implementierung bieten kann.
